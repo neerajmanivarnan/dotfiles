@@ -1,4 +1,4 @@
-# Dotfiles for i3wm, Picom, Dunst, Polybar and Nvim.
+# Dotfiles
 
 This repository contains my personalized configuration files for i3 Window Manager (i3wm), Picom compositor, Dunst notification daemon, and Polybar status bar as well as my neovim configurations along with my personalised keybindings. These configurations are purely personal.
 
