@@ -1,0 +1,254 @@
+
+[colors]
+bg = #77080808
+fg = #b2b2b2
+
+;[bar/bottom]
+;width = 15%
+;offset-x = 43%
+;offset-y = 16
+;height = 32
+;radius = 8
+;
+;bottom = true
+;background = ${color.bg}
+;foreground = ${colors.fg}
+;border-size = 0
+;padding-left = 2
+;padding-right = 2
+;module-margin = 1
+;
+;font-0 = "Monospace 16"
+;font-1 = "Monospace 16"
+;font-2 = "Monospace 16"
+;font-3 = "Monospace 16"
+;font-4 = "Monospace 16"
+;font-5 = "Monospace 16"
+;font-6 = "Monospace 16"
+;
+;
+;modules-center = i3
+
+[bar/main]
+width = 100%
+offset-x = 36
+offset-y = 25
+height = 40
+radius = 8
+
+bottom = false
+background = ${colors.bg}
+foreground = ${colors.fg}
+border-size = 0
+padding-left = 2
+padding-right = 2
+module-margin = 1
+
+
+
+font-0 = "Monospace 16"
+
+cursor-click = pointer
+
+enable-ipc = true
+
+wm-restack = i3 
+
+modules-left = i3 
+modules-right = wlan date pulseaudio battery
+
+
+[module/wlan]
+type = internal/network
+interface = wlp1s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+;format-connected-underline = #9f78e1
+label-connected = %essid%
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 7
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = #7E60BF
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...% 
+
+
+
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = true
+
+interval = 5
+format-volume = <ramp-volume> <label-volume>
+label-muted = 󰖁 muted
+label-muted-foreground = #666
+ramp-volume-0 = 
+ramp-volume-1 = 󰕾
+ramp-volume-2 = 
+click-right = pavucontrol
+
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+use-actual-brightness = true
+enable-scroll = true
+format = <label>
+label =  %percentage%%
+
+[module/battery]
+type = internal/battery
+
+full-at = 99
+low-at = 5
+
+battery = BAT0
+adapter = ADP1
+
+poll-interval = 5
+time-format = %H:%M
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-charging = Charging %percentage%%
+label-discharging = %percentage%%
+label-full = Fully charged
+label-low = BATTERY LOW
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+bar-capacity-width = 10
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-framerate = 500
+animation-low-0 = !
+animation-low-1 = 
+animation-low-framerate = 200
+
+
+[module/date]
+type = internal/date
+interval = 1.0
+
+date = %A, %Y-%m-%d%
+
+; Optional time format
+time = %I:%M: %p
+
+; date-alt = %A, %d %B %Y
+; time-alt = %H:%M:%S
+format = 🕓 <label>
+
+label =  %date% 󱑎 %time%
+
+[module/memory]
+type = internal/memory
+
+interval = 3
+
+warn-percentage = 95
+format = <label>
+label = 󰍛 %gb_used%/%gb_free%
+label-warn = %gb_used%/%gb_free%
+bar-used-indicator =
+bar-used-width = 50
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+
+[module/temperature]
+type = internal/temperature
+interval = 0.5
+thermal-zone = 0
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
+base-temperature = 20
+warn-temperature = 60
+units = false
+format-warn = <ramp> <label-warn>
+label = %temperature-c%°C
+label-warn = TEMP!! %temperature-c%°C
+label-warn-foreground = #f00
+ramp-0 = A
+ramp-1 = B
+ramp-2 = C
+ramp-foreground = #55
+
+
