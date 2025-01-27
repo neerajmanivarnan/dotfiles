@@ -1,6 +1,6 @@
 # Dotfiles
 
-This repository contains my personalized configuration files for i3 Window Manager (i3wm), Picom compositor, Dunst notification daemon, and Polybar status bar as well as my neovim configurations along with my personalised keybindings. These configurations are purely personal.
+This repository contains my personalized configuration files for i3 Window Manager (i3wm), Picom compositor, Dunst notification daemon, tmux config file and Polybar status bar as well as my neovim configurations along with my personalised keybindings. These configurations are purely personal.
 
 ## Overview
 
@@ -9,6 +9,7 @@ This repository contains my personalized configuration files for i3 Window Manag
 - **Dunst**: Minimal notification daemon.
 - **Polybar**: Highly customizable status bar.
 - **NVIM**: Personalised nvchad neovim configuration.
+- **Tmux**: Personalised tmux configuration focused on ergonomics to use tmux.
 
 ## Configurations
 
@@ -19,6 +20,7 @@ Here’s where each configuration file is located:
 - **Dunst**: `~/.config/dunst/dunstrc`
 - **Polybar**: `~/.config/polybar/*`
 - **nvim**: `~/.config/nvim/*`
+- **tmux**: `~/.tmux.conf`
 
 ## Installation
 
@@ -35,6 +37,7 @@ Here’s where each configuration file is located:
     ln -s ~/dotfiles/.config/picom ~/.config/picom
     ln -s ~/dotfiles/.config/dunst ~/.config/dunst
     ln -s ~/dotfiles/.config/polybar ~/.config/polybar
+    ln -s ~/dotfiles/.config/tmux/.tmux.conf ~/.tmux.conf
 
 3. **Restart the desktop environment**:
         `Mod+Shift+r`
